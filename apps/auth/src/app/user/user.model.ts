@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IUser, UserRole } from '@shop/interfaces';
 import { Document } from 'mongoose';
+import { IUser, UserRole } from '@shop/interfaces';
 
 @Schema()
 export class UserModel extends Document implements IUser {

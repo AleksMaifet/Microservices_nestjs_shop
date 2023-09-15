@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   await app.init();
-  Logger.log(`🚀 Application auth is running!`);
+  Logger.log(`🚀 Application Auth is running`);
 }
 
 bootstrap();

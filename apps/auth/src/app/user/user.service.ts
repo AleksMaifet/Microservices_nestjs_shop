@@ -1,11 +1,12 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { AccountRegister } from '@shop/contracts';
-import { UserRole } from '@shop/interfaces';
 import { compare, genSalt, hash } from 'bcrypt';
+
 import { UserModel } from './user.model';
 import { USER_NOT_FOUND_ERROR, WRONG_PASSWORD_ERROR } from './user.constants';
+import { AccountRegister } from '@shop/contracts';
+import { UserRole } from '@shop/interfaces';
 
 @Injectable()
 export class UserService {

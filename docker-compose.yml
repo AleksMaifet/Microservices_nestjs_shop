@@ -1,7 +1,8 @@
 version: '3.1'
 services:
-  rmq:
+  rabbitmq:
     image: rabbitmq:3-management
+    container_name: rabbitmq
     restart: always
     ports:
       - "15672:15672"
@@ -15,3 +16,79 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     ports:
       - "27017:27017"
+
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./apps/api/src/Dockerfile
+    env_file:
+      - ./apps/api/src/.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+      - mongo
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  auth:
+    container_name: auth
+    build:
+      context: .
+      dockerfile: ./apps/auth/src/Dockerfile
+    env_file:
+      - ./apps/auth/src/.env
+    depends_on:
+      - api
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  product:
+    container_name: product
+    build:
+      context: .
+      dockerfile: ./apps/product/src/Dockerfile
+    env_file:
+      - ./apps/product/src/.env
+    depends_on:
+      - api
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  cart:
+    container_name: cart
+    build:
+      context: .
+      dockerfile: ./apps/cart/src/Dockerfile
+    env_file:
+      - ./apps/cart/src/.env
+    depends_on:
+      - api
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  order:
+    container_name: order
+    build:
+      context: .
+      dockerfile: ./apps/order/src/Dockerfile
+    env_file:
+      - ./apps/order/src/.env
+    depends_on:
+      - api
+      - mongo
+      - rabbitmq
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules

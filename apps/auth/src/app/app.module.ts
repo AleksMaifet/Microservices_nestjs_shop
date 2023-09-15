@@ -1,39 +1,27 @@
 import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RMQModule } from 'nestjs-rmq';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { DatabaseModule } from '@shop/database';
+import { getJWTConfig, getRMQConfig } from './configs';
 import { UserModule } from './user/user.module';
-import { getJWTConfig, getMongoConfig, getRMQConfig } from './configs';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     UserModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'envs/.catalog.env',
-    }),
-    RMQModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: getRMQConfig,
-    }),
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: getMongoConfig,
+      envFilePath: './apps/auth/src/.env',
     }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: getJWTConfig,
     }),
-    PassportModule,
+    DatabaseModule,
+    RMQModule.forRootAsync(getRMQConfig()),
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

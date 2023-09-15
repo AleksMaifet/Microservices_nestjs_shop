@@ -1,8 +1,20 @@
 {
   "name": "@shop/source",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:api": "nx serve api",
+    "dev:auth": "nx serve auth",
+    "dev:product": "nx serve product",
+    "dev:cart": "nx serve cart",
+    "dev:order": "nx serve order",
+    "build:all": "nx run build:api && nx run build:auth && nx run build:product && nx run build:order && nx run build:cart",
+    "build:api": "nx build api",
+    "build:auth": "nx build auth",
+    "build:product": "nx build product",
+    "build:order": "nx build order",
+    "build:cart": "nx build cart"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",

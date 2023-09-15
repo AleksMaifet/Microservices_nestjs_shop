@@ -8,9 +8,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { AccountLogin, AccountRegister } from '@shop/contracts';
 import { RMQService } from 'nestjs-rmq';
-import { AuthDto } from '../dtos/auth';
+import { AccountLogin, AccountRegister } from '@shop/contracts';
+import { AuthDto } from '../dtos';
 
 @Controller('auth')
 export class AuthController {

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@shop/contracts": ["libs/contracts/src/index.ts"],
+      "@shop/database": ["libs/database/src/index.ts"],
       "@shop/guards": ["libs/guards/src/index.ts"],
       "@shop/interfaces": ["libs/interfaces/src/index.ts"],
       "@shop/strategies": ["libs/strategies/src/index.ts"]
