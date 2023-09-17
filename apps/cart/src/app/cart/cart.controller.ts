@@ -4,13 +4,13 @@ import {
   HttpStatus,
   NotFoundException,
 } from '@nestjs/common';
-import { RMQRoute, RMQValidate } from 'nestjs-rmq';
 import { CartCreate, CartDelete, CartGet } from '@shop/contracts';
-import { AppService } from './app.service';
+import { RMQRoute, RMQValidate } from 'nestjs-rmq';
+import { CartService } from './cart.service';
 
 @Controller()
-export class AppController {
-  constructor(private readonly cartService: AppService) {}
+export class CartController {
+  constructor(private readonly cartService: CartService) {}
 
   @RMQValidate()
   @RMQRoute(CartCreate.topic)

@@ -1,17 +1,17 @@
 import { Body, Controller, NotFoundException } from '@nestjs/common';
-import { RMQRoute, RMQValidate } from 'nestjs-rmq';
 import {
   ProductCreate,
   ProductDelete,
   ProductGet,
   ProductUpdate,
 } from '@shop/contracts';
+import { RMQRoute, RMQValidate } from 'nestjs-rmq';
 import { PRODUCT_NOT_FOUND_ERROR } from './product.constants';
-import { AppService } from './app.service';
+import { ProductService } from './product.service';
 
 @Controller()
-export class AppController {
-  constructor(private readonly productService: AppService) {}
+export class ProductController {
+  constructor(private readonly productService: ProductService) {}
 
   @RMQValidate()
   @RMQRoute(ProductCreate.topic)

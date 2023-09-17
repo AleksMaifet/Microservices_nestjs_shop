@@ -12,7 +12,7 @@ import { RMQService } from 'nestjs-rmq';
 import { AccountLogin, AccountRegister } from '@shop/contracts';
 import { AuthDto } from '../dtos';
 
-@Controller('auth')
+@Controller('order')
 export class AuthController {
   constructor(private readonly rmqService: RMQService) {}
 

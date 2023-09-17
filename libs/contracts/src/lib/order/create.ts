@@ -6,7 +6,7 @@ import {
 } from 'class-validator';
 
 export namespace OrderCreate {
-  export const topic = 'order.create';
+  export const topic = 'product.create';
 
   export class Dto {
     @IsString()

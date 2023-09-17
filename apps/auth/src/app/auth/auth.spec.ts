@@ -6,7 +6,6 @@ import { IUser } from '@shop/interfaces';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from '@shop/database';
 import { UserService } from '../user/user.service';
-import { UserModule } from '../user/user.module';
 import { AuthModule } from './auth.module';
 
 const registerDto: AccountRegister.Dto = {
@@ -34,7 +33,6 @@ describe('AuthController', () => {
         }),
         DatabaseModule,
         RMQModule.forTest({}),
-        UserModule,
       ],
     }).compile();
 

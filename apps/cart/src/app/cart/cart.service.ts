@@ -5,7 +5,7 @@ import { CartCreate } from '@shop/contracts';
 import { CartModel } from './cart.model';
 
 @Injectable()
-export class AppService {
+export class CartService {
   constructor(
     @InjectModel(CartModel.name)
     private readonly cartModel: Model<CartModel>

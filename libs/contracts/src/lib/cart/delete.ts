@@ -1,3 +1,3 @@
 export namespace CartDelete {
-  export const topic = 'cart.delete';
+  export const topic = 'product.delete';
 }

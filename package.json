@@ -12,7 +12,7 @@
     "build:product": "nx build product",
     "build:order": "nx build order",
     "build:cart": "nx build cart",
-    "test": "nx test",
+    "test": "nx test --skip-nx-cache",
     "lint": "nx lint",
     "api:dev:docker": "nx serve api",
     "auth:dev:docker": "nx serve auth",

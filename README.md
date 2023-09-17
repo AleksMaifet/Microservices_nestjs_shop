@@ -26,6 +26,10 @@
 
 - MONGO_URI
 
+- MONGO_USERNAME
+
+- MONGO_PASSWORD
+
 • Step 4: docker-compose up --build -V
 
 

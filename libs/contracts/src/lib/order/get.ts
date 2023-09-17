@@ -1,3 +1,3 @@
 export namespace OrderGet {
-  export const topic = 'order.get';
+  export const topic = 'product.get';
 }
