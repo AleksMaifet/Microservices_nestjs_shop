@@ -3,17 +3,22 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "dev:api": "nx serve api",
-    "dev:auth": "nx serve auth",
-    "dev:product": "nx serve product",
-    "dev:cart": "nx serve cart",
-    "dev:order": "nx serve order",
+    "start": "nx serve",
+    "start:all": "nx run-many --target=serve --all --parallel=10",
+    "build": "nx build",
     "build:all": "nx run build:api && nx run build:auth && nx run build:product && nx run build:order && nx run build:cart",
     "build:api": "nx build api",
     "build:auth": "nx build auth",
     "build:product": "nx build product",
     "build:order": "nx build order",
-    "build:cart": "nx build cart"
+    "build:cart": "nx build cart",
+    "test": "nx test",
+    "lint": "nx lint",
+    "api:dev:docker": "nx serve api",
+    "auth:dev:docker": "nx serve auth",
+    "product:dev:docker": "nx serve product",
+    "order:dev:docker": "nx serve order",
+    "cart:dev:docker": "nx serve cart"
   },
   "private": true,
   "dependencies": {
