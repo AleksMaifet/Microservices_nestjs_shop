@@ -18,7 +18,7 @@ jobs:
       - name: install modules
         run: npm install
       - name: build project
-        run: npm run build:product
+        run: npm run build:auth
 
       - name: run and test app
         run: |
