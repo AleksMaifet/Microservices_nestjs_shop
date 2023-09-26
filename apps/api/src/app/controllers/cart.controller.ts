@@ -15,7 +15,7 @@ import { CartCreate, CartDelete, CartGet } from '@shop/contracts';
 import { JwtAuthGuard } from '@shop/guards';
 import { CartDto } from '../dtos';
 
-@Controller('order')
+@Controller('cart')
 export class CartController {
   constructor(private readonly rmqService: RMQService) {}
 
